@@ -84,11 +84,35 @@ mul_vect_binaire( [H1 |T1 ], [[H2] | T2], R):-
 
 %matrice en dur
 matrice(M):-
-	M = [[u,o],[o,u],[u,u],[o,o]].
+	M = [[u,o],[o,u],[u,u],[o,u]].
+
+
+creer_vect(1, [u], 1).
+creer_vect(1, [o], 0).
+
+creer_vect(L, R, N):-
+	L > 1,
+	L2 is L-1,
+	N2 is N-1,
+	creer_vect(L2, R2, N2),
+	R = [u | R2].
+
+creer_vect(L, R, N):-
+	L > 1,
+	L > N,
+	L2 is L-1,
+	creer_vect(L2, R2, N),
+	R = [o | R2].
 
 
 
-%solution(matrice(M), V):-
+solution_binaire(M, V, Y, Nombre):-
+	matrice(M),
+	nb_ligne(M, L),
+	creer_vect(L, V, Nombre),
+	mul_mat_binaire_2(V, M, Y).
+
+	
 
 
 %sépare la premire colonne d une matrice
