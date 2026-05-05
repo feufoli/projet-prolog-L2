@@ -50,7 +50,7 @@ mul_mat_binaire([ H |M1 ], M2 ,R):-
 	R = [R3 | R2].
 
 
-%multiplie une ligne et une matrice
+%multiplie une ligne et une matrice : rend un vecteur
 
 mul_mat_binaire_2(V1, V2, R):-
 	nb_colonne(V2, C),
@@ -67,7 +67,7 @@ mul_mat_binaire_2(V1, [H | T], R):-
 	R = [R2 | R3].
 
 
-%multiplie une ligne par une colonne
+%multiplie une ligne par une colonne : rend une valeur binaire
 mul_vect_binaire( [H1 |T1 ], [[H2] | _], R):-
 	nb_ligne([H1 |T1 ], L),
 	L is 1,
@@ -87,12 +87,111 @@ matrice(M):-
 	M = [[u,o],[o,u],[u,u],[o,u]].
 
 
+m_facile(M):-
+	M = [[o,u,o,o,o,u,u,o,o,o,o,o,u],
+[o,u,u,u,u,u,u,u,u,o,u,u,o],
+[u,o,o,u,o,o,u,o,o,u,u,o,u],
+[u,u,o,u,u,o,o,u,u,o,o,u,u],
+[u,u,u,o,o,u,o,o,o,o,u,o,o],
+[u,o,o,u,u,u,u,o,o,o,o,u,o],
+[u,o,o,o,o,o,u,o,u,o,o,o,o],
+[o,u,u,o,o,o,u,u,u,u,o,o,o],
+[u,u,u,u,u,u,o,o,o,o,u,u,o],
+[o,o,u,o,o,u,o,u,u,u,u,u,u],
+[u,o,u,u,o,u,o,u,o,o,o,o,o],
+[o,u,u,o,u,u,o,o,o,u,u,u,u],
+[o,o,u,o,u,o,o,u,u,o,o,o,u],
+[o,u,o,u,u,u,u,o,o,u,o,o,o],
+[o,u,u,u,o,o,o,o,u,o,u,o,o],
+[o,u,u,u,o,o,u,o,o,o,u,u,o],
+[u,u,o,o,o,u,u,u,o,o,o,u,o],
+[u,o,o,u,u,o,o,o,u,o,o,o,o],
+[u,o,u,u,o,u,o,o,u,u,u,u,u],
+[u,o,o,u,o,o,o,u,u,o,u,u,u],
+[u,u,o,o,o,u,o,o,o,u,u,u,u],
+[o,o,u,u,o,o,o,u,u,o,u,u,o],
+[o,u,o,o,u,u,o,u,u,o,o,u,o],
+[u,u,u,u,o,u,o,u,o,u,o,u,o],
+[o,o,o,u,u,u,u,o,u,o,o,o,u],
+[o,o,o,o,o,u,u,o,o,o,o,o,u]].
+
+y_facile(Y):-
+	Y = [o,u,u,u,o,o,u,u,o,u,o,o,u].
+
+m_moyen(M):-
+	M = [[u,o,u,o,u,u,o,u,u,u,o,o,o],
+[u,o,u,o,o,u,u,o,o,o,u,u,o],
+[u,u,u,u,o,u,o,o,o,o,u,u,u],
+[o,o,o,o,o,u,u,o,u,o,u,u,o],
+[o,u,o,o,o,u,o,u,o,u,u,o,u],
+[u,u,u,o,u,u,o,u,o,u,o,o,u],
+[o,u,u,u,u,o,o,u,o,u,u,o,u],
+[u,u,o,o,u,u,o,u,o,u,u,o,u],
+[o,o,u,u,u,u,u,u,u,o,u,u,o],
+[u,u,u,u,o,o,u,u,o,u,u,u,o],
+[u,o,o,u,u,o,o,o,o,u,u,u,u],
+[u,u,u,u,u,u,u,o,u,o,u,o,u],
+[u,o,o,u,o,o,o,u,u,o,o,u,o],
+[o,u,o,u,u,o,u,o,o,u,u,o,u],
+[o,u,o,o,o,o,o,u,u,u,u,o,u],
+[u,u,o,u,o,u,u,u,u,o,o,u,u],
+[u,u,u,o,o,u,u,o,o,u,o,u,u],
+[o,u,o,u,u,o,o,o,u,o,u,u,u],
+[o,u,u,o,o,u,o,u,o,u,u,u,u],
+[u,o,o,u,o,o,o,u,o,u,o,u,u],
+[o,o,o,u,u,u,o,u,u,u,o,o,u],
+[o,o,o,u,o,o,u,u,u,u,u,u,o],
+[u,u,u,u,u,o,o,u,u,u,o,o,u],
+[o,u,o,u,o,o,o,u,u,u,u,o,u],
+[o,u,o,u,o,o,o,u,o,u,o,u,u],
+[o,o,u,o,u,o,o,o,u,o,o,o,o]].
+
+y_moyen(Y):-
+	Y = [u,u,o,o,o,o,o,o,u,o,u,o,u].
+
+m_dur(M):-
+	M = [[u,u,u,o,u,o,u,u,o,u,o,u,o,o,o],
+[u,o,o,o,u,u,o,u,u,u,o,u,u,u,o],
+[o,u,u,u,o,o,u,o,o,o,u,u,u,u,o],
+[o,o,o,u,u,o,o,u,u,o,o,o,o,o,o],
+[u,o,o,o,u,o,o,o,o,o,o,u,o,o,o],
+[u,u,o,u,u,o,o,u,u,o,o,o,o,u,o],
+[u,o,o,o,u,o,u,o,u,u,o,o,u,o,o],
+[u,u,o,u,o,u,u,u,o,u,u,u,u,u,o],
+[u,o,o,o,u,u,u,u,u,u,o,o,o,u,u],
+[o,u,u,o,u,o,u,u,u,u,u,o,u,o,o],
+[u,o,u,o,u,u,o,o,u,o,u,u,u,u,o],
+[o,u,o,u,o,u,o,o,u,u,u,o,u,u,o],
+[o,u,u,o,o,o,o,o,u,u,o,u,o,o,o],
+[u,u,o,o,u,u,o,o,u,u,u,o,u,u,o],
+[o,o,u,o,o,o,u,o,o,o,u,u,u,u,u],
+[u,u,o,o,o,o,u,o,u,o,u,u,o,u,u],
+[o,u,u,o,u,o,u,o,o,u,u,o,u,u,u],
+[o,u,u,u,o,o,o,o,u,o,o,u,u,o,o],
+[u,o,u,o,u,o,u,o,u,o,u,u,u,o,o],
+[o,u,u,o,u,u,u,u,u,o,o,u,o,u,u],
+[u,u,u,u,u,o,u,o,o,u,u,u,u,o,u],
+[o,o,u,u,u,o,o,u,u,o,u,u,o,o,o],
+[u,u,u,u,u,u,u,o,o,u,u,o,u,u,o],
+[u,o,u,o,u,u,u,u,u,o,u,o,o,u,u],
+[u,o,o,o,u,u,u,u,u,u,u,u,u,u,u],
+[o,o,o,u,o,o,o,o,o,u,o,o,o,o,o],
+[u,u,o,u,o,o,u,u,o,o,u,o,o,u,u],
+[u,o,u,o,o,u,o,o,o,o,o,o,u,u,u],
+[u,o,o,u,o,u,u,o,u,u,o,o,u,u,u],
+[o,u,o,o,o,o,o,u,u,o,o,o,u,u,u]].
+
+y_dur(Y):-
+	Y = [o,u,u,o,u,u,u,u,u,o,o,o,o,o,u].
+
+
 creer_vect(1, [u], 1).
 creer_vect(1, [o], 0).
 
 creer_vect(L, R, N):-
 	L > 1,
 	L2 is L-1,
+	N > 0,
 	N2 is N-1,
 	creer_vect(L2, R2, N2),
 	R = [u | R2].
@@ -105,14 +204,36 @@ creer_vect(L, R, N):-
 	R = [o | R2].
 
 
+vect(1, [u]).
+vect(1, [o]).
+
+vect(L, R):-
+	L > 1,
+	L2 is L-1,
+	valeur_binaire(B),
+	vect(L2, R2),
+	R = [B | R2].
+
+
+
+solution_binaire(M, V, Nombre):-
+	matrice(M),
+	nb_colonne(M, C),
+	nb_ligne(M, L),
+	creer_vect(C, Y, 0),
+	creer_vect(L, V, Nombre),
+	mul_mat_binaire_2(V, M, Y).
+
 
 solution_binaire(M, V, Y, Nombre):-
-	matrice(M),
+	m_dur(M),
+	y_dur(Y),
 	nb_ligne(M, L),
 	creer_vect(L, V, Nombre),
 	mul_mat_binaire_2(V, M, Y).
 
-	
+
+
 
 
 %sépare la premire colonne d une matrice
