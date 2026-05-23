@@ -255,7 +255,7 @@ solution_binaire(M, V, Y, Nombre):-
 
 %10 u/d
 m_facile_t(M):-
-	M = [u,o,u,o,d,o,o,d,o,u],
+	M = [[u,o,u,o,d,o,o,d,o,u],
 	[o,o,o,o,d,o,o,o,d,d],
 	[d,d,d,d,o,u,o,o,o,o],
 	[u,o,d,o,u,u,u,o,d,d],
@@ -274,7 +274,7 @@ m_facile_t(M):-
 	[d,o,u,u,d,u,o,d,u,u],
 	[d,o,o,u,u,o,d,d,o,o],
 	[d,d,u,o,u,u,o,o,o,d],
-	[d,o,d,d,o,u,o,o,d,o].
+	[d,o,d,d,o,u,o,o,d,o]].
 
 
 
@@ -282,8 +282,8 @@ y_facile_t(Y):-
 	Y = [d,d,d,d,o,u,d,d,u,o].
 
 %8 u/5
-m_moyen(M):-
-	M = [d,o,d,d,u,u,o,d,o,u],
+m_moyen_t(M):-
+	M = [[d,o,d,d,u,u,o,d,o,u],
 	[d,o,d,u,u,u,o,u,u,o],
 	[d,o,o,o,o,o,o,d,o,u],
 	[o,o,d,u,o,d,o,u,u,d],
@@ -302,7 +302,7 @@ m_moyen(M):-
 	[o,d,d,o,o,o,u,d,u,o],
 	[o,u,u,d,d,o,u,u,o,o],
 	[d,u,u,o,u,d,u,u,u,u],
-	[u,o,d,u,d,u,d,o,u,d].
+	[u,o,d,u,d,u,d,o,u,d]].
 
 
 y_moyen_t(Y):-
@@ -310,7 +310,7 @@ y_moyen_t(Y):-
 
 %5u/d
 m_dur_t(M):-
-	M = [o,d,d,o,d,o,d,o,d,d],
+	M = [[o,d,d,o,d,o,d,o,d,d],
 	[d,o,o,o,u,d,o,o,d,u],
 	[u,o,d,d,o,u,d,d,u,u],
 	[d,o,u,u,o,o,d,o,d,o],
@@ -329,7 +329,7 @@ m_dur_t(M):-
 	[o,o,o,d,d,o,o,o,u,u],
 	[u,o,o,d,u,d,d,d,u,o],
 	[d,u,u,u,o,d,o,o,d,u],
-	[o,u,d,d,o,d,d,o,o,o].
+	[o,u,d,d,o,d,d,o,o,o]].
 		
 y_dur_t(Y):-
 	Y = [u,o,d,d,d,u,o,u,d,u].
